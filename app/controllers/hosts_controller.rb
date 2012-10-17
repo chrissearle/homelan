@@ -2,7 +2,7 @@ class HostsController < ApplicationController
   before_filter :find_host, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @hosts = Host.order("ip_address ASC, wlan_ip_address ASC, description ASC")
+    @hosts = Host.order("description ASC")
   end
 
   def new

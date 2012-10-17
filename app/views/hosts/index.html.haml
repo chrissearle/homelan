@@ -1,26 +1,33 @@
+.well
+  %i.icon-plus
+  = link_to "Add Host", new_host_path
+
 %table.table.table-bordered.table-striped.table-condensed
   %thead
     %tr
-      %th
-        = "Description"
-      %th
-        = "IPv4 (eth)"
-      %th
-        = "IPv4 (wlan)"
-      %th
-        = "Mac (eth)"
-      %th
-        = "Mac (wlan)"
-      %th
-        = "Flags"
-      %th
-        = "Actions"
+      %th= "Description"
+      %th= "Hostnames"
+      %th= "IPv4 (eth)"
+      %th= "IPv4 (wlan)"
+      %th= "Mac (eth)"
+      %th= "Mac (wlan)"
+      %th= "Flags"
+      %th= "Actions"
 
   %tbody
     - @hosts.each do |host|
       %tr
         %td
           = host.description
+        %td
+          - host.hostnames.each do |hostname|
+            %p
+              - if hostname.primary
+                %strong
+                  = hostname.hostname
+                  %i.icon-star
+              - else
+                = hostname.hostname
         %td
           = host.ip_address
         %td
@@ -43,6 +50,6 @@
             %a{ :rel => 'tooltip', :title => 'Bind Allocated'}
               %i.icon-file
         %td
-          = link_to "Show", host_path(host), :class => 'btn btn-mini'
-          = link_to "Edit", edit_host_path(host), :class => 'btn btn-mini btn-warning'
-          = link_to "Delete", host_path(host), :method => 'delete', :confirm => "Sure?", :class => 'btn btn-mini btn-danger'
+          = link_to raw("<i class='icon-eye-open'></i>"), host_path(host), :class => 'btn btn-mini', :title => "Show #{host.description}"
+          = link_to raw("<i class='icon-edit'></i>"), edit_host_path(host), :class => 'btn btn-mini btn-warning', :title => "Edit #{host.description}"
+          = link_to raw("<i class='icon-trash'></i>"), host_path(host), :method => 'delete', :confirm => "Sure?", :class => 'btn btn-mini btn-danger', :title => "Delete #{host.description}"

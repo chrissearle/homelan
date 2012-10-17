@@ -1,5 +1,7 @@
 = simple_form_for(@host, :html => {:class => 'form-horizontal' }) do |f|
   = f.input :description
+  = f.input :hostname, :label => "Primary Hostname"
+  = f.input :hostname_list, :label => "Other Hostnames", :hint => "Comma separated"
   = f.input :ethernet_mac, :label => "Mac address (eth)"
   = f.input :wlan_mac, :label => "Mac address (wifi)"
   = f.input :ip_address, :label => "IPv4 Address (eth)"
