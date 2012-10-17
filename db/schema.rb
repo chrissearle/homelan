@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017065826) do
+ActiveRecord::Schema.define(:version => 20121017074558) do
 
   create_table "hostnames", :force => true do |t|
     t.string   "hostname",                      :null => false
@@ -22,14 +22,15 @@ ActiveRecord::Schema.define(:version => 20121017065826) do
   end
 
   create_table "hosts", :force => true do |t|
-    t.string   "description",                    :null => false
+    t.string   "description",                       :null => false
     t.string   "ethernet_mac"
     t.string   "wlan_mac"
     t.string   "ip_address"
-    t.boolean  "dhcp_flag",    :default => true, :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "active_flag",  :default => true, :null => false
+    t.boolean  "dhcp_flag",       :default => true, :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "active_flag",     :default => true, :null => false
+    t.string   "wlan_ip_address"
   end
 
 end

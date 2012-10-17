@@ -1,4 +1,8 @@
 Homelan::Application.routes.draw do
+  resources :hosts
+
+  root :to => 'hosts#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

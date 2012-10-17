@@ -19,5 +19,6 @@ gem 'jquery-rails'
 gem 'thin'
 
 gem 'haml'
+gem 'simple_form'
 
 gem 'foreman', :require => false

@@ -1,0 +1,48 @@
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th
+        = "Description"
+      %th
+        = "IPv4 (eth)"
+      %th
+        = "IPv4 (wlan)"
+      %th
+        = "Mac (eth)"
+      %th
+        = "Mac (wlan)"
+      %th
+        = "Flags"
+      %th
+        = "Actions"
+
+  %tbody
+    - @hosts.each do |host|
+      %tr
+        %td
+          = host.description
+        %td
+          = host.ip_address
+        %td
+          = host.wlan_ip_address
+        %td
+          = host.ethernet_mac
+        %td
+          = host.wlan_mac
+        %td
+          - if host.active_flag
+            %a{ :rel => 'tooltip', :title => 'Active'}
+              %i.icon-ok
+          - else
+            %a{ :rel => 'tooltip', :title => 'Inactive'}
+              %i.icon-off
+          - if host.dhcp_flag
+            %a{ :rel => 'tooltip', :title => 'DHCP Allocated'}
+              %i.icon-cog
+          - else
+            %a{ :rel => 'tooltip', :title => 'Bind Allocated'}
+              %i.icon-file
+        %td
+          = link_to "Show", host_path(host), :class => 'btn btn-mini'
+          = link_to "Edit", edit_host_path(host), :class => 'btn btn-mini btn-warning'
+          = link_to "Delete", host_path(host), :method => 'delete', :confirm => "Sure?", :class => 'btn btn-mini btn-danger'
