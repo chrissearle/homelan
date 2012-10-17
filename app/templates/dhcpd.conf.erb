@@ -27,7 +27,7 @@ group {
         ddns-domainname             "home.chrissearle.org";
 
 <% @ethernet_hosts.each do |host| %>
-        <%= host.hostname %>-tp {
+        host <%= host.hostname %>-tp {
             hardware ethernet <%= host.ethernet_mac %>;
             fixed-address <%=  host.ip_address %>;
             ddns-hostname "<%= host.hostname %>-tp";
@@ -35,7 +35,7 @@ group {
 <% end %>
 
 <% @wlan_hosts.each do |host| %>
-        <%= host.hostname %> {
+        host <%= host.hostname %> {
             hardware ethernet <%= host.wlan_mac %>;
             fixed-address <%=  host.wlan_ip_address %>;
             ddns-hostname "<%= host.hostname %>";
