@@ -18,15 +18,15 @@ class BuildsController < ApplicationController
   end
 
   def dhcpd
-    send_data build.dhcpd_conf, :filename => 'dhcpd.conf'
+    send_data @build.dhcpd_conf, :filename => 'dhcpd.conf'
   end
 
   def forward
-    send_data build.zone_name, :filename => 'home.chrissearle.org'
+    send_data @build.zone_name, :filename => 'home.chrissearle.org'
   end
 
   def reverse
-    send_data build.zone_ip, :filename => '1.168.192.in-addr.arpa'
+    send_data @build.zone_ip, :filename => '1.168.192.in-addr.arpa'
   end
 
   def destroy
