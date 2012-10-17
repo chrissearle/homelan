@@ -3,8 +3,14 @@ class Host < ActiveRecord::Base
 
   has_many :hostnames
 
+  scope :in_dhcp, where(:dhcp_flag => true)
+  scope :in_named, where(:dhcp_flag => false)
+  scope :active, where(:active_flag => true)
+  scope :wireless, where("wlan_ip_address <> '' AND wlan_mac <> ''")
+  scope :wired, where("ip_address <> '' AND ethernet_mac <> ''")
+
   def hostname
-    if (hostnames.empty? || hostnames.primary_host.empty?)
+    if hostnames.empty? || hostnames.primary_host.empty?
       ""
     else
       hostnames.primary_host.first.hostname

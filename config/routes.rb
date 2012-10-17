@@ -1,6 +1,14 @@
 Homelan::Application.routes.draw do
   resources :hosts
 
+  resources :builds do
+    member do
+      get 'dhcpd'
+      get 'forward'
+      get 'reverse'
+    end
+  end
+
   root :to => 'hosts#index'
 
   # The priority is based upon order of creation:

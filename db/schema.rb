@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017074558) do
+ActiveRecord::Schema.define(:version => 20121017111615) do
+
+  create_table "builds", :force => true do |t|
+    t.text     "dhcpd_conf", :null => false
+    t.text     "zone_name",  :null => false
+    t.text     "zone_ip",    :null => false
+    t.string   "serial",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "comment"
+  end
 
   create_table "hostnames", :force => true do |t|
     t.string   "hostname",                      :null => false

@@ -1,0 +1,24 @@
+.well
+  %i.icon-plus
+  = link_to "Add Build", new_build_path
+
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th= "Serial"
+      %th= "Comment"
+      %th= "dhcpd.conf"
+      %th= "home.chrissearle.org"
+      %th= "1.168.192.in-addr.arpa"
+      %th= "Actions"
+
+  %tbody
+    - @builds.each do |build|
+      %tr
+        %td= build.serial
+        %td= build.comment
+        %td= link_to "dhcpd.conf", dhcpd_build_path(build)
+        %td= link_to "home.chrissearle.org", forward_build_path(build)
+        %td= link_to "1.168.192.in-addr.arpa", reverse_build_path(build)
+        %td
+          = link_to raw("<i class='icon-trash'></i>"), build_path(build), :method => 'delete', :confirm => "Sure?", :class => 'btn btn-mini btn-danger', :title => "Delete #{build.serial}"

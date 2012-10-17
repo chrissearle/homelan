@@ -1,0 +1,58 @@
+ddns-update-style interim;
+
+update-static-leases on;
+
+authoritative;
+
+key dhcpupdate {
+  algorithm hmac-md5;
+  secret <%= ENV['DHCPSECRET'] %>;
+}
+
+zone 1.168.192.in-addr.arpa {
+  primary localhost;
+  key dhcpupdate;
+}
+
+zone home.chrissearle.org {
+  primary localhost;
+  key dhcpupdate;
+}
+
+group {
+        option subnet-mask          255.255.255.0;
+        option routers              192.168.1.2;
+        option domain-name-servers  192.168.1.2;
+        option domain-name          "home.chrissearle.org";
+        ddns-domainname             "home.chrissearle.org";
+
+<% @ethernet_hosts.each do |host| %>
+        <%= host.hostname %>-tp {
+            hardware ethernet <%= host.ethernet_mac %>;
+            fixed-address <%=  host.ip_address %>;
+            ddns-hostname "<%= host.hostname %>";
+        }
+<% end %>
+
+<% @wlan_hosts.each do |host| %>
+        <%= host.hostname %> {
+            hardware ethernet <%= host.wlan_mac %>;
+            fixed-address <%=  host.wlan_ip_address %>;
+            ddns-hostname "<%= host.hostname %>";
+        }
+<% end %>
+}
+shared-network LOCAL-NET {
+        option  domain-name          "home.chrissearle.org ";
+        option  domain-name-servers  192.168.1.2;
+
+        subnet 192.168.1.0 netmask 255.255.255.0 {
+          option routers 192.168.1.2;
+
+          range 192.168.1.100 192.168.1.150;
+
+          ddns-hostname = binary-to-ascii(10, 8, "-", leased-address);
+          ddns-domainname = "home.chrissearle.org";
+        }
+}
+

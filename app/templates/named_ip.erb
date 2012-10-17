@@ -1,0 +1,16 @@
+$ORIGIN .
+$TTL 3600       ; 1 hour
+1.168.192.in-addr.arpa           IN SOA  ns.home.chrissearle.org. hostmaster.chrissearle.org. (
+                                <%= @serial %>      ; serial
+                                3600            ; refresh 1 hr
+                                1800            ; retry 30 mins
+                                604800          ; expire 1 wk
+                                3600            ; minimum 1 hr
+                                )
+                        NS      ns.home.chrissearle.org.
+
+$ORIGIN 1.168.192.in-addr.arpa.
+<% @named_hosts.each do |host| %>
+<%= host.ip_address.gsub(/.*\./, "") %> PTR <%= host.hostname %>.home.chrissearle.org.
+
+<% end %>

@@ -1,0 +1,22 @@
+$ORIGIN .
+$TTL 3600       ; 1 hour
+home.chrissearle.org            IN SOA  ns.home.chrissearle.org. hostmaster.chrissearle.org. (
+                                <%= @serial %>  ; serial
+                                3600            ; refresh 1 hr
+                                1800            ; retry 30 mins
+                                604800          ; expire 1 wk
+                                3600            ; minimum 1 hr
+                                )
+                        NS      ns.home.chrissearle.org.
+
+$ORIGIN home.chrissearle.org.
+<% @named_hosts.each do |host| %>
+<%= host.hostname %> A <%= host.ip_address %>
+
+<% if host.hostnames %>
+<% host.hostnames.other_hosts.each do |otherhost| %>
+<%=  otherhost.hostname  %> CNAME <%= host.hostname %>
+
+<% end %>
+<% end %>
+<% end %>
