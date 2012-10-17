@@ -30,7 +30,7 @@ group {
         <%= host.hostname %>-tp {
             hardware ethernet <%= host.ethernet_mac %>;
             fixed-address <%=  host.ip_address %>;
-            ddns-hostname "<%= host.hostname %>";
+            ddns-hostname "<%= host.hostname %>-tp";
         }
 <% end %>
 
