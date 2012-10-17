@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017063735) do
+ActiveRecord::Schema.define(:version => 20121017065826) do
 
   create_table "hostnames", :force => true do |t|
     t.string   "hostname",                      :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121017063735) do
     t.boolean  "dhcp_flag",    :default => true, :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.boolean  "active_flag",  :default => true, :null => false
   end
 
 end
