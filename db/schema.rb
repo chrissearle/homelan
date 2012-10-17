@@ -14,20 +14,21 @@
 ActiveRecord::Schema.define(:version => 20121017063735) do
 
   create_table "hostnames", :force => true do |t|
-    t.string   "name"
-    t.boolean  "primary"
+    t.string   "hostname",                      :null => false
+    t.boolean  "primary",    :default => false, :null => false
     t.integer  "host_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "hosts", :force => true do |t|
-    t.string   "description"
+    t.string   "description",                    :null => false
     t.string   "ethernet_mac"
     t.string   "wlan_mac"
     t.string   "ip_address"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "dhcp_flag",    :default => true, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end

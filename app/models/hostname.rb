@@ -1,3 +1,7 @@
 class Hostname < ActiveRecord::Base
-  attr_accessible :host_id, :name, :primary
+  attr_accessible :name, :primary
+
+  belongs_to :host
+
+  scope :primary_host, where(:primary => true)
 end
