@@ -31,6 +31,31 @@ module HostsHelper
       end
     end
 
-    "<a rel='tooltip' title='#{status}'><i class='#{icon}'></i> #{ip}#{hostname}</a>".html_safe
+    format_line(icon, "#{ip}#{hostname}", status)
+  end
+
+  def format_line(icon, text, tooltip)
+    "<a rel='tooltip' title='#{tooltip}'><i class='#{icon}'></i> #{text}</a>".html_safe
+  end
+
+  def format_hostname(hostname)
+    hn = Hostname.find_by_hostname(hostname)
+
+    host = nil
+    icon = "icon-ok"
+    status = "Available"
+
+    unless hn.blank?
+      host = hn.host
+      if (host.active_flag?)
+        icon = "icon-star"
+        status = "Active"
+      else
+        icon = "icon-off"
+        status = "Inactive"
+      end
+    end
+
+    format_line(icon, hostname, status)
   end
 end

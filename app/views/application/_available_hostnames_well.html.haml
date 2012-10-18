@@ -1,0 +1,7 @@
+.well
+  %h3= "Available"
+  %ul.nav.nav-list
+    %li.nav-header
+      Hostnames
+    - HOSTNAMES.each do |h|
+      %li= format_hostname h

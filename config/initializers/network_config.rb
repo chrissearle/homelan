@@ -6,4 +6,20 @@ NETWORK_GROUPS = {
     :dhcp => 100..150,
     :old_wlan => 200..209,
     :wlan => 210..230
-}
+}.freeze
+
+HOSTNAMES = [
+    :bonnet,
+    :campernel,
+    :czar,
+    :dolphin,
+    :galatea,
+    :goldeneagle,
+    :islander,
+    :klondyke,
+    :menavaur,
+    :nornour,
+    :serica,
+    :shah,
+    :slippen
+].freeze

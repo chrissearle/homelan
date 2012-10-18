@@ -14,6 +14,7 @@
         = f.button :submit
     .span4
       = render :partial => 'host_range_well'
+      = render :partial => 'available_hostnames_well'
       = render :partial => 'available_hosts_well', :locals => { :group => :wlan }
     .span3
       = render :partial => 'available_hosts_well', :locals => { :group => :computers }
