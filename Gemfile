@@ -22,3 +22,5 @@ gem 'haml'
 gem 'simple_form'
 
 gem 'foreman', :require => false
+
+gem 'bullet', :group => :development
