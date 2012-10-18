@@ -3,5 +3,4 @@
   %ul.nav.nav-list
     %li.nav-header= group.to_s
     - NETWORK_GROUPS[group].each do |quad|
-      - if !host_exists "#{NETWORK_PREFIX}#{quad}"
-        %li= "#{NETWORK_PREFIX}#{quad}"
+      %li= format_ip_address quad
