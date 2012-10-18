@@ -24,3 +24,5 @@ gem 'simple_form'
 gem 'foreman', :require => false
 
 gem 'bullet', :group => :development
+
+gem 'brakeman', :group => :development
