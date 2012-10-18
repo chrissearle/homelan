@@ -1,0 +1,7 @@
+.well
+  %h3
+    Ranges
+  %ul.nav.nav-list
+    - NETWORK_GROUPS.each do |key, val|
+      %li.nav-header= key.to_s
+      %li= "#{NETWORK_PREFIX}#{val.to_s}"
