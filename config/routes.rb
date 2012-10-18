@@ -1,7 +1,7 @@
 Homelan::Application.routes.draw do
   resources :hosts
 
-  resources :builds do
+  resources :builds, :only => [:new, :create, :destroy, :index] do
     member do
       get 'dhcpd'
       get 'forward'

@@ -15,7 +15,7 @@ class HostsController < ApplicationController
     if @host.save
       redirect_to hosts_path, notice: "Host created"
     else
-      render :action => :new
+      render :new
     end
   end
 
@@ -26,7 +26,7 @@ class HostsController < ApplicationController
      if @host.update_attributes(params[:host])
        redirect_to hosts_path, notice: "Host updated"
      else
-       render :action => "edit"
+       render :edit
      end
    end
 

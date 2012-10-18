@@ -21,8 +21,8 @@ gem 'thin'
 gem 'haml'
 gem 'simple_form'
 
-gem 'foreman', :require => false
-
 gem 'bullet', :group => :development
 
-gem 'brakeman', :group => :development
+gem 'foreman', :require => false
+gem 'brakeman', :require => false
+gem 'rails_best_practices', :require => false
