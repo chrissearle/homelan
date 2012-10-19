@@ -16,6 +16,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'dalli'
+
 gem 'thin'
 
 gem 'haml'
